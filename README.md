@@ -1,5 +1,12 @@
 ### Hi there 👋
 tibaoge's blog
+
+所有人代码提交至dev分支，
+
+后续统一合并至dev-rp分支。
+
+所有代码最终都会合并至 master 分支
+
 <!--
 **tibaoge/tibaoge** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
 
