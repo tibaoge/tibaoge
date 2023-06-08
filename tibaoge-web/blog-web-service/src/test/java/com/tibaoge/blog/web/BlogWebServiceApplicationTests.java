@@ -1,10 +1,10 @@
-package com.tibaoge.web;
+package com.tibaoge.blog.web;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class TibaogeWebApplicationTests {
+class BlogWebServiceApplicationTests {
 
     @Test
     void contextLoads() {

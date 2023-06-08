@@ -1,13 +1,13 @@
-package com.tibaoge.web;
+package com.tibaoge.blog.web;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class TibaogeWebApplication {
+public class BlogWebServiceApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(TibaogeWebApplication.class, args);
+        SpringApplication.run(BlogWebServiceApplication.class, args);
     }
 
 }
