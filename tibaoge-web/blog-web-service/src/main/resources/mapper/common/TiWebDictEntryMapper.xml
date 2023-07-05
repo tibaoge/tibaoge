@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tibaoge.blog.web.dao.TiWebDictEntryMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.tibaoge.blog.web.entity.TiWebDictEntry">
+        <result column="id" property="id" />
+        <result column="dict_entry_code" property="dictEntryCode" />
+        <result column="kind_code" property="kindCode" />
+        <result column="dict_entry_name" property="dictEntryName" />
+        <result column="ctrl_flag" property="ctrlFlag" />
+        <result column="opt_status" property="optStatus" />
+        <result column="last_modify_date" property="lastModifyDate" />
+        <result column="last_modify_time" property="lastModifyTime" />
+        <result column="last_modify_name" property="lastModifyName" />
+        <result column="create_date" property="createDate" />
+        <result column="create_time" property="createTime" />
+        <result column="creator_name" property="creatorName" />
+        <result column="enabled" property="enabled" />
+        <result column="remark" property="remark" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, dict_entry_code, kind_code, dict_entry_name, ctrl_flag, opt_status, last_modify_date, last_modify_time, last_modify_name, create_date, create_time, creator_name, enabled, remark
+    </sql>
+
+</mapper>

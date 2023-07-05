@@ -1,10 +1,75 @@
+//plugins {
+//    id 'java'
+//    id 'org.springframework.boot' version '3.1.0'
+//    id 'io.spring.dependency-management' version '1.1.0'
+//    id "com.arenagod.gradle.MybatisGenerator" version "1.4"
+//    id 'org.mybatis.generator' version '1.4.0'
+//}
+//
+//group = 'com.tibaoge'
+//version = '0.0.1-SNAPSHOT'
+//sourceCompatibility = '17'
+//
+//repositories {
+//    mavenCentral()
+//}
+//
+//ext {
+//    lombok='1.18.28'
+//    mybatis_plus='3.5.3.1'
+//    mysql='8.0.33'
+//    mybatis_generator='1.4.0'
+//    mybatis_core='1.4.0'
+//}
+//
+//dependencies {
+//    implementation 'org.springframework.boot:spring-boot-starter'
+//    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+//    // lombok 依赖
+//    compileOnly group: 'org.projectlombok', name: 'lombok', version: project.lombok
+//    // mybatis plus 依赖
+//    implementation group: 'com.baomidou', name: 'mybatis-plus-boot-starter', version: project.mybatis_plus
+//    // mysql 驱动依赖
+//    runtimeOnly group: 'mysql', name: 'mysql-connector-java', version: project.mysql
+//    // mybatis 自动生成插件
+//    implementation group: 'org.mybatis.generator', name: 'mybatis-generator-maven-plugin', version: project.mybatis_generator
+//    // https://mvnrepository.com/artifact/org.mybatis.generator/mybatis-generator-core
+//    implementation group: 'org.mybatis.generator', name: 'mybatis-generator-core', version: project.mybatis_core
+//    // https://mvnrepository.com/artifact/org.apache.ant/ant
+//    implementation group: 'org.apache.ant', name: 'ant', version: '1.10.13'
+//
+//}
+//
+//tasks.named('test') {
+//    useJUnitPlatform()
+//}
+//
+//// 配置MBG插件
+//apply plugin: 'org.mybatis.generator'
+//
+//mybatisGenerator {
+//    configFile = file('src/main/resources/mybatis-generator.xml')
+////    configFile = '/Users/dingxuekang/Desktop/home/dingxingkang/03_项目管理/tibaoge/tibaoge-web/blog-web-service/src/main/resources/mybatis/generatorConfig.xml'
+//    verbose = true
+//    overwrite = true
+//}
+//
+////configurations {
+////     mybatisGenerator
+////}
+////
+////mybatisGenerator {
+////    verbose = true
+////    configFile = '/Users/dingxuekang/Desktop/home/dingxingkang/03_项目管理/tibaoge/tibaoge-web/blog-web-service/src/main/resources/mybatis/generatorConfig.xml'
+////}
+
 plugins {
-    id 'java'
     id 'org.springframework.boot' version '3.1.0'
-    id 'io.spring.dependency-management' version '1.1.0'
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+    id 'java'
 }
 
-group = 'com.tibaoge'
+group = 'com.example'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '17'
 
@@ -13,10 +78,17 @@ repositories {
 }
 
 dependencies {
-    implementation 'org.springframework.boot:spring-boot-starter'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.2.0'
+    implementation 'org.mybatis.generator:mybatis-generator-core:1.4.0'
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
-tasks.named('test') {
-    useJUnitPlatform()
+task generateCode(type: JavaExec) {
+    group = 'codegen'
+    description = 'Generate MyBatis code using MBG'
+    classpath = sourceSets.main.runtimeClasspath
+    main = 'org.mybatis.generator.api.ShellRunner'
+    args = ['-configfile', 'src/main/resources/mybatis-generator.xml', '-overwrite']
 }
